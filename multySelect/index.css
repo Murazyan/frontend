@@ -1,0 +1,47 @@
+.multy-select-container {
+    width: 200px;
+    height: 80px;
+    background: green;
+    border: 3px solid black;
+    border-radius: 7px;
+    padding: 5px;
+/*    overflow: hidden;*/
+}
+
+.select-input {
+    padding: 5px;
+/*    width:100%;*/
+    height: calc(100% - 10px);
+    overflow-y: hidden;
+    overflow-x: auto;
+    display:flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    gap: 5px;
+}
+
+.select-drop-down {
+    margin-top: 10px;
+    background: yellow;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.list-item {
+    padding: 2px;
+    border: 1px solid blue;
+    margin: 2px;
+}
+
+.close-icon {
+    display:none;
+}
+
+.closable .close-icon {
+    width: 15px;
+    display: inline-block;
+    height: 15px;
+    background-color: black;
+}
