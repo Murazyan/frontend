@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML to PDF Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .content-block {
+            margin-bottom: 20px;
+            page-break-after: always;
+        }
+        /* Remove the page-break-after for the last content block */
+        .content-block:last-child {
+            page-break-after: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <div class="content-block">
+        <h2>Content Block 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque orci a velit vehicula, in cursus libero tempor. Donec ultricies, ligula nec vulputate elementum, sapien purus pulvinar libero, nec scelerisque turpis eros eget elit. Integer tincidunt dapibus urna, vel bibendum ligula malesuada eu. Proin hendrerit dui sit amet ligula gravida, ut tincidunt mauris varius. Fusce mollis urna nec augue aliquam, sit amet lacinia eros dignissim. Sed venenatis, magna nec ullamcorper pharetra, nulla odio tempor felis, non aliquet turpis lorem at est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis cursus metus euismod est gravida condimentum.</p>
+    </div>
+    <div class="content-block">
+        <h2>Content Block 2</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque orci a velit vehicula, in cursus libero tempor. Donec ultricies, ligula nec vulputate elementum, sapien purus pulvinar libero, nec scelerisque turpis eros eget elit. Integer tincidunt dapibus urna, vel bibendum ligula malesuada eu. Proin hendrerit dui sit amet ligula gravida, ut tincidunt mauris varius. Fusce mollis urna nec augue aliquam, sit amet lacinia eros dignissim. Sed venenatis, magna nec ullamcorper pharetra, nulla odio tempor felis, non aliquet turpis lorem at est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis cursus metus euismod est gravida condimentum.</p>
+    </div>
+    <div class="content-block">
+        <h2>Content Block 3</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque orci a velit vehicula, in cursus libero tempor. Donec ultricies, ligula nec vulputate elementum, sapien purus pulvinar libero, nec scelerisque turpis eros eget elit. Integer tincidunt dapibus urna, vel bibendum ligula malesuada eu. Proin hendrerit dui sit amet ligula gravida, ut tincidunt mauris varius. Fusce mollis urna nec augue aliquam, sit amet lacinia eros dignissim. Sed venenatis, magna nec ullamcorper pharetra, nulla odio tempor felis, non aliquet turpis lorem at est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis cursus metus euismod est gravida condimentum.</p>
+    </div>
+</div>
+
+<button onclick="generatePDF()">Generate PDF</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+<script>
+    function generatePDF() {
+        const element = document.getElementById('content');
+        const opt = {
+            margin: 1,
+            filename: 'document_with_automatic_page_breaks.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        // New Promise-based usage:
+        html2pdf().from(element).set(opt).save();
+    }
+</script>
+</body>
+</html>
