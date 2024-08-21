@@ -1,0 +1,11 @@
+<div class="login-card d-flex flex-column m-2 shadow">
+    <div class="card-title">
+        <h1 class="fs-3 fw-bold text-center text-primary">Sign In</h1>
+        <span>You don't have an account? <button>Sign up</button></span>
+    </div>
+    <form class="form-group" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input name="email" type="email" formControlName="email" placeholder="Email" class="w-100 p-3 mb-2">
+        <input type="password" formControlName="password" placeholder="Password" class="w-100 p-3 mb-2">
+        <button class="btn btn-primary w-100" style="font-size: 16px; padding: 8px 15px;">Login</button>
+    </form>
+</div>

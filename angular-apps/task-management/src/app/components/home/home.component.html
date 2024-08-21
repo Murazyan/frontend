@@ -1,0 +1,18 @@
+<div class="container d-flex flex-column allign-items-center h-100">
+    <app-header></app-header>
+    <div class="content">
+
+        <div *ngIf="currentUser; else login">
+            {{currentUser.name}}
+        </div>
+        <ng-template #login>
+            <div>
+                Welcome to task management system, please log in to use our features.
+            </div>
+            <app-login></app-login>
+        </ng-template>
+        
+    </div>
+    <app-footer></app-footer>
+</div>
+
