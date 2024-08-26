@@ -1,0 +1,21 @@
+<div class="column">
+    <div>
+        <span style="color: rgb(16, 80, 17); background-color: azure;">
+            {{title}}
+        </span>
+    </div>
+    <div class="task-list" 
+            [id]="title"
+            cdkDropList
+            [cdkDropListData]="tasks" 
+            [cdkDropListConnectedTo]="getIds(title)"
+            (cdkDropListDropped)="drop($event)">
+        <div class="task-item" *ngFor="let item of tasks" cdkDrag [cdkDragData]="item">
+            <app-task-item 
+                [columnName]="title"
+                [task]="item" 
+            >   
+            </app-task-item>
+          </div>
+    </div>
+</div>
