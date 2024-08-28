@@ -1,0 +1,51 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Edit Task: {{task.title}}</h4>
+    </div>
+    <div class="modal-body">
+        <form  #editForm="ngForm" (ngSubmit)="editTask(editForm)" >
+            <div>
+                <label for="title">Task title:</label>
+                <textarea   name="title"
+                            class="form-control" 
+                            id="title" 
+                            [ngModel]="task.title"></textarea>
+            </div>
+            <div>
+                <label for="status">Task Status:</label>
+                <select name="status" 
+                        id="status"
+                        class="form-select form-control" 
+                        aria-label="Task Status" 
+                        [ngModel]="task.status">
+                    <option [selected]="task.status.toLocaleString()===status"  
+                            *ngFor="let status of getTaskSTatuses()">{{status}}</option>
+                </select>
+            </div>
+            <div>
+                <label for="description" >Task Description:</label>
+                <textarea   name="description" 
+                            class="form-control" 
+                            id="description"type=""  
+                            [ngModel]="task.desctioption"></textarea>
+            </div>
+            <div class="modal-footer">
+
+           
+                <button type="button" 
+                        class="btn btn-primary"
+                        (click)="closeModal()"
+                >Close
+                </button> 
+            
+                <input type="submit" [disabled]="editForm.untouched || !editForm.dirty" 
+                        class="btn btn-primary" value="Submit" />
+                  
+              </div>
+    
+        </form>
+
+    </div>
+
+  </ng-template>
+  

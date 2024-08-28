@@ -1,0 +1,38 @@
+<div class="login-card d-flex flex-column m-2 shadow"  *ngIf="signInForm; else signUp">
+    <div class="card-title">
+        <h1 class="fs-3 fw-bold text-center text-primary">Sign In</h1>
+        <span>You don't have an account?
+             <span class="m-2" 
+            style="cursor: pointer" (click)="openSignUpForm()">
+            Sign up
+        </span>
+    </span>
+    </div>
+    <form class="form-group" class="d-flex flex-column" [formGroup]="loginForm" (ngSubmit)="login()">
+        <div>
+            <input name="email" type="email" formControlName="email" placeholder="Email" class="w-100 p-3 mb-2">
+            <input type="password" formControlName="password" placeholder="Password" class="w-100 p-3 mb-2">
+        </div>
+
+        <button class="btn btn-primary w-100 mt-auto" style="font-size: 16px; padding: 8px 15px; margin-top: 0px;">Login</button>
+    </form>
+</div>
+
+<ng-template #signUp>
+    <div class="login-card d-flex flex-column m-2 shadow" >
+    <div class="card-title">
+        <h1 class="fs-3 fw-bold text-center text-primary">Sign Up</h1>
+        <span>You already have a account?
+             <span class="m-2" 
+            style="cursor: pointer" (click)="openSignInForm()">
+            Sign In
+        </span>
+    </span>
+    </div>
+    <form class="form-group" [formGroup]="loginForm" (ngSubmit)="register()">
+        <input name="email" type="email" formControlName="email" placeholder="Email" class="w-100 p-3 mb-2">
+        <input type="password" formControlName="password" placeholder="Password" class="w-100 p-3 mb-2">
+        <button class="btn btn-primary w-100" style="font-size: 16px; padding: 8px 15px;">Register</button>
+    </form>
+</div>
+</ng-template>
