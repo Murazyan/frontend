@@ -2,16 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { ApiUrl } from '../apiUrl';
-import { filter, firstValueFrom, map, Observable, pipe } from 'rxjs';
+import { BehaviorSubject, filter, firstValueFrom, map, Observable, pipe, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  readonly currentUser = 'currentUser'
+  readonly currentUser = 'currentUser';
 
-  constructor(private httpClient: HttpClient) { }
+  currentUserS = new BehaviorSubject<User | null>(this.getLoggedinUser())
+
+  constructor(private httpClient: HttpClient) {}
 
 
   public getLoggedinUser(): User | null {
@@ -25,24 +27,30 @@ export class UserService {
   }
 
   // Fetch a user by email and password
-  public async getUserByEmailAndPassword(email: string, password: string) : Promise<Observable<User | undefined>>  {
+  public async getUserByEmailAndPassword(email: string, password: string) : Promise<Observable<User | null>>  {
      let users$ = this.getUsers().pipe(
       map((users: User[]) => 
-        users.find(user => 
+        <User | null>users.find(user => 
           user.email.toLowerCase() === email.toLowerCase() && 
           user.password.toLowerCase() === password.toLowerCase()
         )
       )
     );
-    const user = await firstValueFrom(users$);
-    if (user) {
-      localStorage.setItem(this.currentUser, JSON.stringify(user));
-    }
+    users$.subscribe(user => {
+      if (user) {
+        localStorage.setItem(this.currentUser, JSON.stringify(user));
+      }
+      this.currentUserS.next(user);
+    });
+    
     return users$;
   }
 
 
-
+  logout() {
+    localStorage.removeItem(this.currentUser)
+    this.currentUserS.next(null)
+  }
 
 
 }
