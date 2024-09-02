@@ -49,8 +49,7 @@ export class LoginComponent implements OnInit {
       this.userService.getUserByEmailAndPassword(email, password)
       .then(
         (user)=>{
-          this
-          user.forEach(us=> us?.isAdmin ? this.router.navigate(['adminHome']) : this.router.navigate(['userHome']) )
+          user.forEach(us=> us?.isAdmin ? this.router.navigate(['adminHome']) : this.router.navigate(['/board']) )
         },
         (error)=>{
           console.log('login error')
