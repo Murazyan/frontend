@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { Task } from '../../models/task';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskStatus } from '../../models/taskStatus';
@@ -8,14 +8,17 @@ import { TaskStatus } from '../../models/taskStatus';
   templateUrl: './board-column.component.html',
   styleUrl: './board-column.component.scss'
 })
-export class BoardColumnComponent {
+export class BoardColumnComponent implements AfterViewInit{
+  
+  ngAfterViewInit(): void {
+  }
 
 
   getIds(arg0: string) :string[]{
-    return [TaskStatus[TaskStatus.NEW],
-     TaskStatus[TaskStatus.IN_PROGRESS], 
-     TaskStatus[TaskStatus.DONE],
-     TaskStatus[TaskStatus.BLOCKED]]
+    return [TaskStatus.NEW,
+     TaskStatus.IN_PROGRESS, 
+     TaskStatus.DONE,
+     TaskStatus.BLOCKED]
     .filter(i => i.toLocaleString() !== arg0)
     .map(s=>s.toLocaleString());
   }
@@ -27,11 +30,7 @@ export class BoardColumnComponent {
 
 
   drop(event: CdkDragDrop<any >) {
-    console.log('drop: ', TaskStatus[event.container.id as keyof typeof TaskStatus].toLocaleString())
-    console.log('drop: data', event.item.data.status.toLocaleString());
-    (<Task>event.item.data).status = TaskStatus[event.container.id as keyof typeof TaskStatus];
-    console.log('drop: data 2', event.item.data.status.toLocaleString());
-
+    (<Task>event.item.data).status =TaskStatus[event.container.id as keyof typeof TaskStatus] ;
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {

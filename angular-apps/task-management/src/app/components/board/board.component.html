@@ -5,7 +5,7 @@
     <div class="container 
                 d-flex 
                 justify-conent-between">
-        <div class="flex-column column" *ngFor="let item of taskData  ">
+        <div class="flex-column column" *ngFor="let item of taskService.taskData  ">
             <app-board-column 
                 [title]="item.name"
                 [tasks]="item.tasks">

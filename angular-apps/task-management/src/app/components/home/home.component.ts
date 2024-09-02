@@ -5,6 +5,7 @@ import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task';
 // import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import { TaskStatus } from '../../models/taskStatus';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,25 +20,28 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(
     private userService: UserService,
     protected taskService: TaskService,
+    private router: Router,
     private cdr: ChangeDetectorRef // Inject ChangeDetectorRef
   ) {}
 
   ngAfterViewInit(): void {
+    if(this.currentUser){
+      console.log('navigating to board')
+      this.router.navigate(['board']
+        // , { state: { taskData: this.taskService.taskData } }
+      )
+    }else{
+      console.log('navigating to logjn')
+      this.router.navigate(['login'])
+    }
+  }
+
+  ngOnInit(): void {
     this.userService.currentUserS.subscribe(user => {
       this.currentUser = user;
-      this.taskService.getTasksByUser(this.currentUser);
-      this.cdr.detectChanges(); 
-    });
-
-    this.taskService.tasksBS$.subscribe(tasks => {
-      tasks.forEach(t => {
-        this.taskService.taskData.find(tt => tt.name === t.status.toString())?.tasks.push(t);
-      });
       this.cdr.detectChanges(); 
     });
   }
-
-  ngOnInit(): void {}
   
 }
 export class TasksModel{
