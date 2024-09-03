@@ -5,6 +5,7 @@ import { TaskFullViewComponent } from './components/task-full-view/task-full-vie
 import { LoginComponent } from './components/login/login.component';
 import { BoardComponent } from './components/board/board.component';
 import { NewTaskComponent } from './components/new-task/new-task.component';
+import { CanActivateCreateUser } from './guards/createTask.guard';
 
 export const routes: Routes = [
     {    
@@ -25,7 +26,8 @@ export const routes: Routes = [
         },
         {
           path: 'new-task',
-          component: NewTaskComponent
+          component: NewTaskComponent,
+          canActivate: [CanActivateCreateUser]
         }
       ]
     }, 
