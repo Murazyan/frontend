@@ -3,8 +3,6 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task';
-// import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
-import { TaskStatus } from '../../models/taskStatus';
 import { Router } from '@angular/router';
 
 
@@ -28,7 +26,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if(this.currentUser){
       console.log('navigating to board')
       this.router.navigate(['board']
-        // , { state: { taskData: this.taskService.taskData } }
       )
     }else{
       console.log('navigating to logjn')

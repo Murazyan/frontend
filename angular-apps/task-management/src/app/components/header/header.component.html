@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-body-secondary" style="min-height: 10vh; max-height: 10vh;">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-body-secondary"
+ style="min-height: 80px; max-height: 10vh; position: fixed; top: 0; z-index: 1000;">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Task Managment</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +11,9 @@
             <a class="nav-link" href="#">Information/Media</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Create New Task</a>
+            <a  class="nav-link" 
+                style="cursor: pointer;"
+                (click)="navigateToNewTaskPage()">Create New Task</a>
           </li>
           <li class="nav-item dropdown d-flex userAvatar" *ngIf="currentUser">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
