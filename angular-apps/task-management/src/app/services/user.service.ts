@@ -1,17 +1,27 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { ApiUrl } from '../apiUrl';
 import { BehaviorSubject, filter, firstValueFrom, map, Observable, pipe, Subject } from 'rxjs';
+import { IUserPagination, IUsersResponse, UserItem } from '../models/IListItem';
+import { PageRequest } from '../models/pageRequest';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+
   readonly currentUser = 'currentUser';
 
   currentUserS = new BehaviorSubject<User | null>(this.getLoggedinUser())
+  public usersResponseBS  =new BehaviorSubject<IUserPagination>({
+    totalElementCount: 10,
+    page: 1,
+    limit: 10,
+    bookId: 0,
+    content: []
+  })
 
   constructor(private httpClient: HttpClient) {}
 
@@ -53,4 +63,28 @@ export class UserService {
   }
 
 
+
+  updateUserInfo(currentUser: User | null) {
+    localStorage.setItem(this.currentUser, JSON.stringify(currentUser));
+    this.currentUserS.next(currentUser);
+  }
+
+  public getUserList( txt: string, pageRequest: PageRequest, unshiftToExisting: boolean = false) {
+    let params = new HttpParams()
+      .set('txt', txt)
+      .set('limit', pageRequest.limit)
+      .set('page', pageRequest.page);
+    // this.httpClient.get<IUsersResponse>(ApiUrl.USERS_PAGINATION, {params}).subscribe(res => {
+    this.httpClient.get<IUsersResponse>(ApiUrl.USERS_PAGINATION).subscribe(res => {
+      let content = [];
+      if (unshiftToExisting) {
+        const existingData = this.usersResponseBS.value.content;
+        existingData.unshift(...res.content.map(c => new UserItem(c)));
+        content = existingData;
+      } else {
+        content = res.content.map(c => new UserItem(c));
+      }
+      this.usersResponseBS.next(<IUserPagination>{...res, content: content, limit: pageRequest.limit});
+    });
+  }
 }

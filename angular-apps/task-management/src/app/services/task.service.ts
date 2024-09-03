@@ -56,4 +56,9 @@ export class TaskService {
       this.taskData.find(tt => tt.name === t.status.toString())?.tasks.push(t);
     });
   }
+
+  
+  getTaskSTatuses(): string[]{
+    return  Object.keys(TaskStatus).filter(key => isNaN(Number(key)));
+  }
 }

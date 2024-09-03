@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Margarita",
+        "surname": "Murazyan",
+        "email": "maga@gmail.com",
+        "password": "123456",
+        "avatar": "assets/images/maga.jpg"
+    },
+    {
+        "name": "Hovhannes",
+        "surname": "Mkrtchyan",
+        "email": "hovo@gmail.com",
+        "password": "123456",
+        "avatar": "images/hovo.jpg"
+    },
+    {
+        "name": "Admin",
+        "surname": "",
+        "email": "admin@gmail.com",
+        "password": "123456",
+        "avatar": "images/admin.jpg"
+    }
+]

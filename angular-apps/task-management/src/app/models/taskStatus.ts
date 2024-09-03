@@ -1,3 +1,6 @@
-export enum TaskStatus{
-    NEW, BLOCKED, IN_PROGRESS, DONE, 
+export enum TaskStatus {
+    NEW = "NEW",
+    BLOCKED = "BLOCKED",
+    IN_PROGRESS = "IN_PROGRESS",
+    DONE = "DONE",
 }

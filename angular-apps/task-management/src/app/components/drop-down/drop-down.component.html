@@ -1,0 +1,24 @@
+<div class="dropdown" #dropdown>
+    <input class="form-control dropdown-toggle"
+           type="text"
+           placeholder="Search..."
+           [(ngModel)]="searchTerm"
+           (input)="onSearchChange()"
+           (click)="toggleDropdown(true)"
+           (focus)="toggleDropdown(true)">
+    <div class="dropdown-menu" appScrollTracker (nearEnd)="onNearEndScroll()"
+         [ngClass]="{ 'show': isDropdownOpen }"
+         aria-labelledby="dropdownMenuButton"
+         style="width: 100%; overflow-y: scroll; height: 30vh"
+         (click)="toggleDropdown(false)">
+      <ul class="dropdown-item-list">
+        <li *ngFor="let item of items"  ngbTooltip="{{ item.value }}">
+          <button class="dropdown-item" (click)="selectItem(item)">{{ item.value }}</button>
+        </li>
+  <!--      <div *ngIf="loading">-->
+  <!--        Loading more items...-->
+  <!--      </div>-->
+      </ul>
+    </div>
+  </div>
+  

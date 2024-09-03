@@ -10,7 +10,9 @@
             <a class="nav-link" href="#">Information/Media</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Create New Task</a>
+            <a  class="nav-link" 
+                style="cursor: pointer;"
+                (click)="navigateToNewTaskPage()">Create New Task</a>
           </li>
           <li class="nav-item dropdown d-flex userAvatar" *ngIf="currentUser">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
