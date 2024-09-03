@@ -1,48 +1,48 @@
 <div>
     <h2>Add New Task</h2>
-    <div>
-        <form  #addTask="ngForm" (ngSubmit)="addNewTask(addTask)" >
-            <div>
-                <label for="title">Task title:</label>
-                <textarea   name="title"
-                            class="form-control" 
-                            id="title" 
-                            ngModel></textarea>
-            </div>
-            <div>
-                <label for="status">Task Status:</label>
-                <select name="status" 
-                        id="status"
-                        class="form-select form-control" 
-                        aria-label="Task Status" 
-                        ngModel>
-                    <option [selected]="status==='NEW'"  
-                            *ngFor="let status of taskService.getTaskSTatuses()">{{status}}</option>
-                </select>
-            </div>
-            <div>
-                <label for="description" >Task Description:</label>
-                <textarea   name="description" 
-                            class="form-control" 
-                            id="description"type=""  
-                            ngModel></textarea>
-            </div>
-            <div>
-                <label>Assigne</label>
-                <app-drop-down [items]="users.content"
-                (onSelect)="onUserSelect($event)"
-                (onSearch)="onUserSearch($event)"
-                (onFieldsScroll)="onUserDropDownScroll()"
-            ></app-drop-down>
-            </div>
-            <div class="">
-
-
-            
-                <input type="submit" [disabled]="addTask.untouched || !addTask.dirty" 
-                        class="btn btn-primary" value="Add" />
-                  
-              </div>
+    <div  style="width: 70vw; height: 80vh;">
+        <form  #addTask="ngForm" (ngSubmit)="addNewTask(addTask)" style="row-gap: 20px;  height: 80vh;" class="d-flex flex-column" >
+            <div class="d-flex flex-column" style="flex: 5;">
+                <div class="">
+                    <label for="title">Task title:</label>
+                    <textarea   name="title"
+                                class="form-control" 
+                                id="title" 
+                                ngModel></textarea>
+                </div>
+                <div>
+                    <label for="status">Task Status:</label>
+                    <select name="status" 
+                            id="status"
+                            class="form-select form-control" 
+                            aria-label="Task Status" 
+                            ngModel>
+                        <option [selected]="status==='NEW'"  
+                                *ngFor="let status of taskService.getTaskSTatuses()">{{status}}</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="description" >Task Description:</label>
+                    <textarea   name="description" 
+                                class="form-control" 
+                                id="description"type=""  
+                                ngModel></textarea>
+                </div>
+                <div>
+                    <label>Assigne</label>
+                    <app-drop-down [items]="users.content"
+                    (onSelect)="onUserSelect($event)"
+                    (onSearch)="onUserSearch($event)"
+                    (onFieldsScroll)="onUserDropDownScroll()"
+                ></app-drop-down>
+                </div>
+        </div>
+         <div class="mt-auto " style="flex: 1;">
+         
+             <input type="submit" [disabled]="addTask.untouched || !addTask.dirty" 
+                     class="btn btn-primary" value="Add" />
+               
+           </div>
     
         </form>
 

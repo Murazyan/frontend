@@ -14,7 +14,7 @@
                     <label for="surname">Surname:</label>
                     <input name="surname" class="form-control" id="surname" [ngModel]="currentUser?.surname" />
                 </div>
-                <input type="submit" [disabled]="editForm.untouched || !editForm.dirty" class="btn btn-primary"
+                <input type="submit" [disabled]="editForm.untouched || !editForm.dirty" class="btn btn-primary mt-3"
                     value="Save changes" />
 
             </form>
@@ -74,7 +74,7 @@
                 </div> 
             </div>
             <input  type="submit"  [disabled]="password.invalid"
-                    class="btn btn-primary"
+                    class="btn btn-primary mt-3"
                     value="Change password" />
 
         </form>

@@ -13,7 +13,7 @@
          (click)="toggleDropdown(false)">
       <ul class="dropdown-item-list">
         <li *ngFor="let item of items"  ngbTooltip="{{ item.value }}">
-          <button class="dropdown-item" (click)="selectItem(item)">{{ item.value }}</button>
+          <div class="dropdown-item" (click)="selectItem(item)">{{ item.value }}</div>
         </li>
   <!--      <div *ngIf="loading">-->
   <!--        Loading more items...-->
