@@ -22,6 +22,7 @@ import { CommentListComponent } from "./components/comment-list/comment-list.com
 import { EditProfieComponent } from "./components/edit-profie/edit-profie.component";
 import { NewTaskComponent } from "./components/new-task/new-task.component";
 import { DropDownComponent } from "./components/drop-down/drop-down.component";
+import { CanActivateCreateUser } from "./guards/createTask.guard";
 
 @NgModule({
     declarations: [
@@ -55,7 +56,7 @@ import { DropDownComponent } from "./components/drop-down/drop-down.component";
       ReactiveFormsModule,
       NgbPaginationModule,
      ],
-    providers:  [],
+    providers:  [CanActivateCreateUser],
     bootstrap: [AppComponent],
     exports:[NgbDropdownModule]
   })
