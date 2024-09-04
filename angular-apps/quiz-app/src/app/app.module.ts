@@ -17,6 +17,7 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { QuestionComponent } from "./components/question/question.component";
 import { QuizItemComponent } from "./components/quiz-item/quiz-item.component";
 import { QuizItemListComponent } from "./components/quiz-item-list/quiz-item-list.component";
+import { QuizComponent } from "./components/quiz/quiz.component";
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import { QuizItemListComponent } from "./components/quiz-item-list/quiz-item-lis
       QuestionComponent,
       QuizItemComponent,
       QuizItemListComponent,
+      QuizComponent,
     ],
     imports: [
       BrowserModule,

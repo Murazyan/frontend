@@ -1,1 +1,9 @@
-<p>quiz-item works!</p>
+<div class="card text-center" style="width: 18rem; height: 15rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{quiz.name}}</h5>
+      <p class="card-text">{{quiz.topicName}}</p>
+      <p class="card-text">Duration: {{quiz.duration}}</p>
+      <p class="card-text">Questions count: {{quiz.questionCount}}</p>
+      <a (click)="startQuiz(quiz)" class="btn btn-primary">Start</a>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div>
+    <div>
+        <div>
+            <span>Question of {{currentQuestionIndex+1}} of {{questions.length}}</span>
+            <span>Your score: {{currentScore}} / {{totalScore}}</span>
+        </div>
+        <div>
+            <!-- <app-timer [time] = "currentQuestion.time"></app-timer> -->
+        </div>
+    </div>
+    <div>
+        <div class="question">
+            <span>{{currentQuestion.question}}</span>
+         </div>
+         <div class="answers">
+            <div *ngFor="let choise of currentQuestion.choises">
+                {{choise}}
+            </div>
+         </div>
+         <button >Confirm</button>
+         <button >Skip</button>
+    </div>
+    <div>
+        <button>Next Qustion</button>
+    </div>
+   
+</div>

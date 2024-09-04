@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -8,13 +8,15 @@ import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 export class TimerComponent implements OnDestroy {
 
 
-  totalTime: number = 35; 
-  remainingTime: number = this.totalTime;
+  @Input('time') totalTime: number; 
+  remainingTime: number;
   intervalId: any;
   progress: number = 100; 
 
   ngOnInit() {
+    this.remainingTime = this.totalTime;
     this.startCountdown();
+
   }
 
   startCountdown() {

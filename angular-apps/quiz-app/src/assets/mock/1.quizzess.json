@@ -3,28 +3,45 @@
         {
             "id": 1,
             "topicName": "Programming",
+            "topicId": 1,
             "name": "Java Core Intern",
-            "questionCount" :35,
-            "duration": 60
+            "questionCount" :5,
+            "duration": 10
 
         },
-
         {
-            "id": 1,
+            "id": 2,
             "topicName": "Programming",
+            "topicId": 1,
             "name": "Java Core Junior",
             "questionCount" :60,
             "duration": 150
 
         },
-
         {
-            "id": 1,
+            "id": 3,
             "topicName": "Programming",
+            "topicId": 1,
             "name": "Spring boot intermediate",
             "questionCount" :15,
             "duration": 30
-
-        }    
+        },
+        {
+            "id": 4,
+            "topicName": "Programming",
+            "topicId": 1,
+            "name": "Spring boot Senior",
+            "questionCount" :25,
+            "duration": 45
+        }   
+        ,
+        {
+            "id": 5,
+            "topicName": "Programming",
+            "topicId": 1,
+            "name": "Spring boot Senior",
+            "questionCount" :25,
+            "duration": 45
+        }   
     ]
 }
