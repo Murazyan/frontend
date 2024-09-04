@@ -8,10 +8,27 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbDropdownModule, NgbPaginationModule, NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
 import { DragDropModule } from "@angular/cdk/drag-drop";
+import { TimerComponent } from "./components/timer/timer.component";
+import { HomeComponent } from "./components/home/home.component";
+import { TopicService } from "./services/topic.service";
+import { TopicSelectorComponent } from "./components/topic-selector/topic-selector.component";
+import { HeaderComponent } from "./components/header/header.component";
+import { FooterComponent } from "./components/footer/footer.component";
+import { QuestionComponent } from "./components/question/question.component";
+import { QuizItemComponent } from "./components/quiz-item/quiz-item.component";
+import { QuizItemListComponent } from "./components/quiz-item-list/quiz-item-list.component";
 
 @NgModule({
     declarations: [
       AppComponent,
+      HeaderComponent,
+      FooterComponent,
+      HomeComponent,
+      TimerComponent,
+      TopicSelectorComponent,
+      QuestionComponent,
+      QuizItemComponent,
+      QuizItemListComponent,
     ],
     imports: [
       BrowserModule,
@@ -25,8 +42,9 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
       FormsModule,
       ReactiveFormsModule,
       NgbPaginationModule,
+
      ],
-    providers:  [],
+    providers:  [TopicService],
     bootstrap: [AppComponent],
     exports:[NgbDropdownModule]
   })

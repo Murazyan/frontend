@@ -1,0 +1,30 @@
+{"quizzess":
+    [
+        {
+            "id": 1,
+            "topicName": "Programming",
+            "name": "Java Core Intern",
+            "questionCount" :35,
+            "duration": 60
+
+        },
+
+        {
+            "id": 1,
+            "topicName": "Programming",
+            "name": "Java Core Junior",
+            "questionCount" :60,
+            "duration": 150
+
+        },
+
+        {
+            "id": 1,
+            "topicName": "Programming",
+            "name": "Spring boot intermediate",
+            "questionCount" :15,
+            "duration": 30
+
+        }    
+    ]
+}

@@ -1,0 +1,21 @@
+ <div   class="d-flex flex-column" 
+        style="background-color: #e8f2f9; height: 100vh;"
+        >
+    <app-header></app-header>
+    <div    class="container d-flex  body"
+            style="flex: 1; 
+            position: fixed;
+            background-color: #e8f2f9; 
+            min-width: 95vw;
+            justify-content: center;
+            align-items: center;
+            top: 80px;">
+        <ng-container *ngIf="!topicService.getSelectedTopic()">
+            <app-topic-selector></app-topic-selector>
+        </ng-container>
+        <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+</div>
+
+ 

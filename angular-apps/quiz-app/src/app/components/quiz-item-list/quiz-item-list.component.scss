@@ -1,0 +1,18 @@
+.card {
+    flex-basis: calc(100% / 5); /* This will set a maximum of 3 items per row */
+    box-sizing: border-box;
+    position: relative;
+    // flex: 1 0 5rem;
+    /* Add padding, margin, or other styling as needed */
+  }
+
+.quiz-list{
+    gap: 10px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap; /* NEW */
+    width: 100vw;
+    height: calc(100vh - 120px);
+    // min-height: calc(100vh - 350px);
+    overflow-y: auto;
+}
