@@ -35,7 +35,7 @@ export class TopicSelectorComponent implements OnInit {
     if(topicId==='0'){
       throw new Error('Topic is not selected');
     }
-    else{
+    else {
       this.topicService.setSelectedTopic(new Topic(topicId))
       this.router.navigate(['topic/' + topicId + '/quizzess'])
     }

@@ -3,8 +3,8 @@
         {
             "id": 1,
             "question": "What is a correct syntax to output    \"Hello World\" in Java?",
-            "correctAnswerNumber": 2, 
-            "time": 120,
+            "correctAnswerNumber": 3, 
+            "time": 10,
             "score":5,
             "choises" :[
                 "Console.WriteLine(\"Hello World\");",  
@@ -18,7 +18,7 @@
         {
             "id": 2,
             "question": "Java is short for \"JavaScript\".",
-            "correctAnswerNumber": 1, 
+            "correctAnswerNumber": 2, 
             "score":2,
             "time": 60,
             "choises" :[
@@ -31,7 +31,7 @@
         {
             "id": 3,
             "question": "How do you insert COMMENTS in Java code?",
-            "correctAnswerNumber": 1, 
+            "correctAnswerNumber": 2, 
             "score":3,
             "time": 240,
             "choises" :[
@@ -43,7 +43,7 @@
         {
             "id": 4,
             "question": "Which data type is used to create a variable that should store text?",
-            "correctAnswerNumber": 3, 
+            "correctAnswerNumber": 4, 
             "score":5,
             "time": 120,
             "choises" :[
@@ -56,7 +56,7 @@
         {
             "id": 5,
             "question": "How do you create a variable with the numeric value 5?",
-            "correctAnswerNumber": 0, 
+            "correctAnswerNumber": 1, 
             "score":5,
             "time": 60,
             "choises" :[

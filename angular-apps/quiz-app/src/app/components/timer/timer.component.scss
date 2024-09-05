@@ -2,12 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
   }
   
   .progress-circle {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     position: relative;
     border-radius: 50%;
     background: white;
@@ -26,14 +25,14 @@
   }
   
   .inside-circle {
-    width: 160px;
-    height: 160px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     background: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
 
   }

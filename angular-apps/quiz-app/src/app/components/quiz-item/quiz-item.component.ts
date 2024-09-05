@@ -19,5 +19,6 @@ export class QuizItemComponent {
   startQuiz(quiz: Quiz) {
     this.router.navigate(['quiz/'+quiz.id])
   }
+    
 
 }

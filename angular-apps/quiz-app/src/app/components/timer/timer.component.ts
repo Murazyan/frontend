@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnDestroy } from '@angular/core';
+import {  Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -7,8 +7,10 @@ import { ChangeDetectorRef, Component, Input, OnDestroy } from '@angular/core';
 })
 export class TimerComponent implements OnDestroy {
 
-
   @Input('time') totalTime: number; 
+  @Output('timeFinsihed') timeFinished = new EventEmitter();
+
+
   remainingTime: number;
   intervalId: any;
   progress: number = 100; 
@@ -25,22 +27,27 @@ export class TimerComponent implements OnDestroy {
         this.remainingTime--;
         this.progress = ((this.totalTime - this.remainingTime) / this.totalTime) * 100;
       } else {
+        this.timeFinished.emit()
         clearInterval(this.intervalId);
       }
     }, 1000);
   }
 
-  formatTime(seconds: number): string {
-    const m = Math.floor(seconds / 60);
-    const s = seconds % 60;
-
-    const mm = m.toString().padStart(2, '0');
-    const ss = s.toString().padStart(2, '0');
-
-    return `${mm}:${ss}`;
-  }
-
   ngOnDestroy() {
     clearInterval(this.intervalId);
+  }
+
+  public startNewTimer(time: number){
+    clearInterval(this.intervalId);
+    this.totalTime = time;
+    this.remainingTime = time
+    this.startCountdown()
+  }
+
+  clear(){
+    clearInterval(this.intervalId);
+    // this.totalTime = 0;
+    // this.remainingTime = 0
+
   }
 }

@@ -18,6 +18,8 @@ import { QuestionComponent } from "./components/question/question.component";
 import { QuizItemComponent } from "./components/quiz-item/quiz-item.component";
 import { QuizItemListComponent } from "./components/quiz-item-list/quiz-item-list.component";
 import { QuizComponent } from "./components/quiz/quiz.component";
+import { ConfirmationModalComponent } from "./components/confirmation-modal/confirmation-modal.component";
+import { NumberToTimePipe } from "./pipes/number-to-time.pipe";
 
 @NgModule({
     declarations: [
@@ -31,6 +33,8 @@ import { QuizComponent } from "./components/quiz/quiz.component";
       QuizItemComponent,
       QuizItemListComponent,
       QuizComponent,
+      ConfirmationModalComponent,
+      NumberToTimePipe,
     ],
     imports: [
       BrowserModule,
