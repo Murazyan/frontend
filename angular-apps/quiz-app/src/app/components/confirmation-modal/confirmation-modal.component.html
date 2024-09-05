@@ -1,0 +1,18 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Confirmatrion</h4>
+    </div>
+    <div class="modal-body">
+      {{question}}
+    </div>
+    <div class="modal-footer">
+      <button *ngIf="modalData.showCancelBtn" type="button" class="btn btn-primary"
+              (click)="handleCancelClick()">{{modalData.cancelBtnText}}
+      </button>
+      <button *ngIf="modalData.showOkBtn" type="button" class="btn btn-primary"
+              (click)="handleYesClick()"
+      >{{modalData.okBtnText}}
+      </button>
+    </div>
+  </ng-template>
+  

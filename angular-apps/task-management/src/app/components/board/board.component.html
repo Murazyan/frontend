@@ -2,11 +2,11 @@
     <div class="m-2">
         <span>TM Board</span>
     </div>
-    <div class="container 
-                d-flex 
+    <div class="container
+                d-flex
                 justify-conent-between">
         <div class="flex-column column" *ngFor="let item of taskService.taskData  ">
-            <app-board-column 
+            <app-board-column
                 [title]="item.name"
                 [tasks]="item.tasks">
             </app-board-column>

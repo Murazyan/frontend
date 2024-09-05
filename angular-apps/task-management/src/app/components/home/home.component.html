@@ -1,7 +1,7 @@
 <div class="container d-flex flex-column allign-items-center h-100">
     <app-header [currentUser]="currentUser"></app-header>
     <div class="content" style="margin: 80px;">
-        
+
         <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>
@@ -9,22 +9,36 @@
 
 
 
-<!-- <div class="d-flex flex-column" style="background-color: yellow; height: 100vh;">
+ <!-- <div class="d-flex flex-column" style="background-color: yellow; height: 100vh;">
     <div class="header" style="min-height: 80px;
-                            width: 100vw; 
-                            position: fixed; 
-                            top: 0; 
-                            z-index: 1000; 
+                            width: 100vw;
+                            position: fixed;
+                            top: 0;
+                            z-index: 1000;
                             background-color:  lightgray;">Header</div>
     <div class="body d-flex flex-row" style="flex: 1; background-color: blueviolet;">
         <div class="sidebar" style="flex: 1; background-color: darkslateblue;">
-        
+
         </div>
         <div class="content" style="flex: 3; background-color: beige;">Content</div>
     </div>
-    
+
     <div class="footer" style="height: 10vh; background-color: aqua;">Footer</div>
-</div> -->
+</div>  -->
+
+
+<!--
+<div class="grid-container" style="background-color: yellow; height: 100vh; display: grid;
+ grid-template-rows: 80px 1fr 10vh;
+  grid-template-columns: 1fr 3fr;">
+    <div class="header" style="grid-column: 1 / -1; background-color: lightgray; position: fixed; top: 0; z-index: 1000; width: 100%; height: 80px;">Header</div>
+    <div class="sidebar" style="background-color: darkslateblue; padding-top: 80px;">Sidebar</div>
+    <div class="content" style="background-color: beige; padding-top: 80px;">Content</div>
+    <div class="footer" style="grid-column: 1 / -1; background-color: aqua;">Footer</div>
+</div>
+-->
+
+
 
 
 

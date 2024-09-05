@@ -1,0 +1,72 @@
+<div class="quiz">
+
+    <div class="d-flex w-100" style="justify-content: space-between;">
+        <div class="" >
+            <p>Question of {{currentQuestionIndex+1}} of {{questions.length}}</p>
+            <p>Your score: {{currentScore}} / {{totalScore}}</p>
+        </div>
+        <div>
+            <app-timer #timer  [time] = "currentQuestion.time"
+                        (timeFinsihed)="timeFinished()"></app-timer>
+        </div>
+    </div>
+
+    <div class="d-flex" style="flex-direction: column; width: 100%; padding-left: 10px;">
+        <div class="question">
+            <h5>{{currentQuestion.question}}</h5>
+         </div>
+         <div class="answers m-5">
+            <div *ngFor="let choise of currentQuestion.choises; let i = index" class="form-check">          
+                <input 
+                [(ngModel)]="selectedAnswer" 
+                [disabled]="selectedAnswer!==''"
+                class="form-check-input"  
+                type="radio" 
+                name="flexRadioDefault" 
+                [id]="'flexRadioDefault' + i" 
+                [value]="i+1">
+            <label  class="form-check-label" 
+                    [for]="'flexRadioDefault' + i"
+                    [ngClass]="{
+                        'text-success': selectedAnswer && selectedAnswer!=='' && i+1 === currentQuestion.correctAnswerNumber,  
+                        'text-danger': selectedAnswer && selectedAnswer!==''&&  i+1 === +selectedAnswer && +selectedAnswer !== currentQuestion.correctAnswerNumber 
+                    }">
+                {{choise}}
+            </label>
+                
+            </div>
+         </div>
+         <div>        
+            <button 
+                (click)="confirmAnswer()"
+                 class="btn btn-outline-primary m-5" 
+                 [disabled]="!selectedAnswer && isAnsweredByUser">
+                    Confirm
+            </button>
+            <button     class="btn btn-outline-primary m-"
+                        [disabled]="selectedAnswer!==''"
+                        (click)="skip()"
+                    >
+                    Skip
+            </button>
+        </div>
+    </div>
+
+
+    <div class="d-flex w-100" style="align-self: flex-end;  justify-content: end;">
+        <button *ngIf="currentQuestionIndex+1<questions.length, else finishQuizBtn" class="btn btn-outline-primary m-5"
+                (click)="nextQuestion()">Next Qustion</button>
+        
+        <ng-template #finishQuizBtn>
+            <button  class="btn btn-outline-primary m-5"
+            (click)="finishQuiz()">Finish quiz</button>
+        </ng-template>
+    </div>
+   
+</div>
+
+
+<app-confirmation-modal #confirmationModal
+    (yesClicked)="handleYesClick($event)"
+    (cancelClicked)="handleCancelClick($event)">
+</app-confirmation-modal>
