@@ -52,6 +52,6 @@ import { NumberToTimePipe } from "./pipes/number-to-time.pipe";
      ],
     providers:  [TopicService],
     bootstrap: [AppComponent],
-    exports:[NgbDropdownModule]
+    exports:[]
   })
 export class AppModule {}
