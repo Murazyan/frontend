@@ -7,6 +7,13 @@ import { BehaviorSubject } from 'rxjs';
 export class TopicService {
 
   private selectedTopic: Topic;
+  // private _selectedTopic: Topic;
+  // public get selectedTopic(): Topic {
+  //   return this._selectedTopic;
+  // }
+  // public set selectedTopic(value: Topic) {
+  //   this._selectedTopic = value;
+  // }
   
   public topicsBS = new BehaviorSubject<Topic[]>([]);
 

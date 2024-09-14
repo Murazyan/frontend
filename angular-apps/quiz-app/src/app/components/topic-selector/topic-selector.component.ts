@@ -17,7 +17,7 @@ export class TopicSelectorComponent implements OnInit {
   constructor(
     private topicService: TopicService,
     private router: Router,
-  ){
+  ) {
 
   }
   
@@ -32,13 +32,13 @@ export class TopicSelectorComponent implements OnInit {
   }
 
   topicSelected(topicId: string) {
-    if(topicId==='0'){
+    if(topicId==='0') {
       throw new Error('Topic is not selected');
     }
-    else {
-      this.topicService.setSelectedTopic(new Topic(topicId))
-      this.router.navigate(['topic/' + topicId + '/quizzess'])
-    }
+
+    this.topicService.setSelectedTopic(new Topic(topicId))
+    this.router.navigate(['topic/' + topicId + '/quizzess'])
+    
   }
 
 }

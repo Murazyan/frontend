@@ -7,116 +7,111 @@ import { ConfirmationModalComponent, ModalData } from '../confirmation-modal/con
 import { TimerComponent } from '../timer/timer.component';
 
 @Component({
-  selector: 'app-quiz',
-  templateUrl: './quiz.component.html',
-  styleUrl: './quiz.component.scss'
+    selector: 'app-quiz',
+    templateUrl: './quiz.component.html',
+    styleUrl: './quiz.component.scss'
 })
 export class QuizComponent {
 
-  protected questions: Question[];
-  protected currentQuestionIndex = 0;
-  protected currentQuestion: Question ;
+    protected questions: Question[];
+    protected currentQuestionIndex = 0;
+    protected currentQuestion?: Question;
 
-  protected currentScore = 0;
-  protected totalScore: number;
-  selectedAnswer: string;
-  isAnsweredByUser = true;
+    protected currentScore = 0;
+    protected totalScore: number;
+    selectedAnswer = '';
+    isAnsweredByUser = true;
 
-  @ViewChild('confirmationModal') confirmationModal: ConfirmationModalComponent;
-  @ViewChild('timer') timer: TimerComponent;
-
-
-  constructor(
-    private activatedRout: ActivatedRoute,
-    private quizService: QuizzessService,
-    private router: Router,
-
-  ){
-    this.selectedAnswer= ''
-    this.activatedRout.params.subscribe(paramMap=>{
-      const quizId = paramMap['quizId']
-      this.quizService.getQuestionData(quizId);
-      this.quizService.questionsBS.subscribe(q=>{
-        this.questions = q
-        this.currentQuestion = this.questions[0];
-        this.totalScore = q.reduce((accumulator, question) => accumulator + question.score, 0);
-      })
-    })
-  }
+    @ViewChild('confirmationModal') confirmationModal: ConfirmationModalComponent;
 
 
-  confirmAnswer() {
-    this.isAnsweredByUser = true;
-    if(this.currentQuestion.correctAnswerNumber===+this.selectedAnswer){
-      this.currentScore = this.currentScore + this.currentQuestion.score;
-    }
-    if(this.currentQuestionIndex +1 < this.questions.length){
-      this.toNextQuestion();
-    } else {
+    constructor(
+        private activatedRout: ActivatedRoute,
+        private quizService: QuizzessService,
+        private router: Router,
 
-      this.finishQuiz()
-    }
-  }
-
-  skip(){
-    this.toNextQuestion();
-  }
-
-
-  nextQuestion(){
-    if(this.selectedAnswer===''){
-      this.confirmationModal.open(new ModalData(
-        "Do you want to go to the next question without answering this one",
-         this.currentQuestion, 
-         "Yes", 
-         "Cancel",
-         true, true
-      ))
-    }else{
-      this.toNextQuestion()
+    ) {
+        this.activatedRout.params.subscribe(paramMap => {
+            const quizId = paramMap['quizId']
+            this.quizService.getQuestionData(quizId);
+            this.quizService.questionsBS.subscribe(q => {
+                this.questions = q
+                this.currentQuestion = this.questions[0];
+                this.totalScore = q.reduce((accumulator, question) => accumulator + question.score, 0);
+            })
+        })
     }
 
 
-  }
-  private toNextQuestion(){
-    this.selectedAnswer='';
-    this.currentQuestionIndex++;
-    this.currentQuestion = this.questions[this.currentQuestionIndex]
-    this.timer.startNewTimer(this.currentQuestion.time);
-    
-  }
-
-  finishQuiz(){
-    this.showQuizResultModal();
-    this.timer.clear();
-  }
-
-  handleCancelClick(currentQuestion: Question) {
-      if(!currentQuestion){
-        this.router.navigate([''])
-      }
-  }
-
-  private showQuizResultModal(){
-    this.confirmationModal.open(new ModalData(
-      "Your result is " +this.currentScore +' / '+ this.totalScore,
-       null,
-       "", 
-       "OK",
-       true, false
-    ))
-
-  }
-  
-  handleYesClick(currentQuestion: Question) {
-    if(currentQuestion) {
-      this.toNextQuestion()
+    confirmAnswer() {
+        this.isAnsweredByUser = true;
+        if (this.currentQuestion!.correctAnswerNumber === +this.selectedAnswer) {
+            this.currentScore = this.currentScore + this.currentQuestion!.score;
+        }
+        if (this.currentQuestionIndex + 1 < this.questions.length) {
+            this.toNextQuestion();
+        } else {
+            this.finishQuiz()
+        }
     }
-  }
 
-  timeFinished() {
-    this.selectedAnswer = ''+this.currentQuestion.correctAnswerNumber
-    this.isAnsweredByUser = false;
-  }
+    skip() {
+        this.toNextQuestion();
+    }
+
+    nextQuestion() {
+        if (this.selectedAnswer === '') {
+            this.confirmationModal.open(new ModalData(
+                "Do you want to go to the next question without answering this one",
+                this.currentQuestion,
+                "Yes",
+                "Cancel",
+                true, true
+            ))
+        } else {
+            this.toNextQuestion()
+        }
+
+
+    }
+
+    private toNextQuestion() {
+        this.selectedAnswer = '';
+        this.currentQuestionIndex++;
+        this.currentQuestion = this.questions[this.currentQuestionIndex];
+
+    }
+
+    finishQuiz() {
+        this.showQuizResultModal();
+    }
+
+    handleCancelClick(currentQuestion: Question) {
+        if (!currentQuestion) {
+            this.router.navigate([''])
+        }
+    }
+
+    private showQuizResultModal() {
+        this.confirmationModal.open(new ModalData(
+            "Your result is " + this.currentScore + ' / ' + this.totalScore,
+            null,
+            "",
+            "OK",
+            true, false
+        ))
+
+    }
+
+    handleYesClick(currentQuestion: Question) {
+        if (currentQuestion) {
+            this.toNextQuestion()
+        }
+    }
+
+    timeFinished() {
+        this.selectedAnswer = '' + this.currentQuestion!.correctAnswerNumber
+        this.isAnsweredByUser = false;
+    }
 
 }

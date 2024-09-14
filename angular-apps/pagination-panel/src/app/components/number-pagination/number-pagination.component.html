@@ -1,0 +1,12 @@
+<div >
+    <app-item-list 
+        [ngClass]="{'disabled': paginationPanedDisabled}"
+        [itemsData] ="itemList"
+        (itemClick) = itemClicked($event)
+        (nextPageClick)="goToPage($event+1)"
+        (previousPageClick)="goToPage($event-1)">
+    </app-item-list>
+</div>
+<div *ngIf="paginationPanedDisabled" class="d-flex">
+    Loading.....
+</div>
