@@ -6,12 +6,21 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ItemComponent } from "./components/item/item.component";
+import { ItemList } from "./models/itemList";
+import { ItemListComponent } from "./components/item-list/item-list.component";
+import { HomeComponent } from "./components/home/home.component";
+import { NumberPaginationComponent } from "./components/number-pagination/number-pagination.component";
 
 
 
 @NgModule({
     declarations: [
-      AppComponent
+      AppComponent,
+      HomeComponent,
+      ItemComponent,
+      ItemListComponent,
+      NumberPaginationComponent
     ],
     imports: [
       BrowserModule,
@@ -20,7 +29,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
       CommonModule,
       HttpClientModule,
       FormsModule,
-      ReactiveFormsModule,
+      ReactiveFormsModule
      ],
     providers:  [],
     bootstrap: [AppComponent],
