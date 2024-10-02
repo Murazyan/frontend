@@ -11,6 +11,9 @@ import { ItemList } from "./models/itemList";
 import { ItemListComponent } from "./components/item-list/item-list.component";
 import { HomeComponent } from "./components/home/home.component";
 import { NumberPaginationComponent } from "./components/number-pagination/number-pagination.component";
+import { CascadingMenuComponent } from "./pages/cascading-menu/components/cascading-menu/cascading-menu.component";
+import { MenuService } from "./pages/cascading-menu/services/menu.service";
+import { MenuItemComponent } from "./pages/cascading-menu/components/menu-item/menu-item.component";
 
 
 
@@ -20,7 +23,9 @@ import { NumberPaginationComponent } from "./components/number-pagination/number
       HomeComponent,
       ItemComponent,
       ItemListComponent,
-      NumberPaginationComponent
+      NumberPaginationComponent,
+      CascadingMenuComponent,
+      MenuItemComponent,
     ],
     imports: [
       BrowserModule,
@@ -31,7 +36,7 @@ import { NumberPaginationComponent } from "./components/number-pagination/number
       FormsModule,
       ReactiveFormsModule
      ],
-    providers:  [],
+    providers:  [MenuService],
     bootstrap: [AppComponent],
     exports:[]
   })
