@@ -1,0 +1,14 @@
+<li class="nav-item" [ngClass]="{'dropdown': hasChildren, 'dropend': level > 1}">
+    <a class="dropdown-item dropdown-toggle" 
+       *ngIf="hasChildren" 
+       href="#" 
+       role="button" 
+       data-bs-toggle="dropdown" 
+       aria-expanded="false">
+      {{ item.name }}
+    </a>
+    <a *ngIf="!hasChildren" class="dropdown-item" [routerLink]="item.href">{{ item.name }}</a>
+    <ul class="dropdown-menu" *ngIf="hasChildren">
+      <app-menu-item *ngFor="let child of item.children" [item]="child" [level]="level + 1"></app-menu-item>
+    </ul>
+</li>
