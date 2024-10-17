@@ -1,0 +1,15 @@
+<div class="flip-card">
+    <div class="flip-card-inner" [class.isOriginal]="cartItemModel.isOriginal" (click)="rotateImage()">
+        <div class="flip-card-front">
+            <div class="img" [style.background-image]="'url(' + images[0]+')'">
+                <div class="clicked-count">
+                    {{cartItemModel.clickedCount}} <br>
+                </div>
+            </div>
+        </div>
+        <div class="flip-card-back">
+            <div class="img" [style.background-image]="'url(' + images[1]+')'">
+            </div>
+        </div>
+    </div>
+</div>

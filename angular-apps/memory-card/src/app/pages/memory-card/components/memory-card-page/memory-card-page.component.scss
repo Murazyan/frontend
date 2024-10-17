@@ -1,0 +1,5 @@
+.no-click {
+    pointer-events: none;
+    opacity: 0.5;  /* Optional: Make it look disabled */
+    cursor: not-allowed;
+  }
