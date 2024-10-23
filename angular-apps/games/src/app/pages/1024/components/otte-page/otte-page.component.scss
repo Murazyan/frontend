@@ -1,0 +1,74 @@
+
+
+.container{
+   background-color: rgb(155 137 122);
+   padding-right: 8px;
+   max-height: calc(100vh - 65px) !important; 
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   align-content: center;
+   overflow: hidden;
+
+  }
+  .item{
+    background-color: rgb(189 172 151);
+    height: 130px;
+    width: 130px;
+    font-size: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 16px;
+    border-radius: 15px;
+    animation: item 0.9s ease;
+
+  }
+.app-row >.app-column:first-child{
+    border-left: 3px dashed rgb(104, 96, 89);
+}
+.app-row >.app-column:last-child{
+    border-right: 3px dashed rgb(104, 96, 89);
+}
+
+  .ant-col-6{
+    flex: none;
+  }
+
+  .item_2{
+   background-color: rgb(238 228 218);
+  }
+  .item_4{
+    background-color: #ebd8b6;
+  }
+  .item_8{
+   background-color:  #f2b076
+  }
+  .item_16{
+    background-color: rgb(246 148 97);
+  }
+  .item_32{
+    background-color: rgb(247 127 99);
+  }
+  .item_64{
+    background-color: rgb(246 200 50);
+  }
+  .item_128{
+    background-color: rgb(246 200 200);
+  }
+  .item_256{
+    background-color: rgb(246 100 191);
+  }
+  .item_512{
+    background-color: rgb(246 100 19);
+  }
+
+  .item_1024{
+    background-color: rgb(150 100 150);
+  }
+
+  .item_1048{
+    background-color: rgb(189 100 87);
+  }
+
+
