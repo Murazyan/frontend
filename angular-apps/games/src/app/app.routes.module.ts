@@ -19,7 +19,11 @@ export const routes: Routes = [
   {
     path:'memory-card',
     loadChildren: () => import('./pages/memory-card/memory-card.module').then(m => m.MemoryCartModule)
-  }
+  },
+  {
+    path:'2048',
+    loadChildren: () => import('./pages/1024/1024.module').then(m => m.OTTEModule)
+  },
   ];
 
 @NgModule({
