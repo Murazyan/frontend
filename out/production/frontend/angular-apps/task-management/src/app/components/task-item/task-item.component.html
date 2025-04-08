@@ -1,0 +1,23 @@
+<div class="item">
+    <div class="d-flex justify-content-between">
+        <h6>{{task.title}}</h6>
+       
+
+        <div class="edit-icon" style="cursor: pointer;">
+            <i class="bi bi-eye m-3" title="Full View" (click)="openTaskFullView(task)"></i>
+            <i class="bi bi-pencil" title="Edit Task" (click)="showTaskEditModal(task)"></i>
+        </div>
+    </div>
+    <div >
+        Label: <span style="background-color: rgb(228 246 231); border-radius:5px">{{task.label}}</span> 
+    </div>
+    <div>
+        Created:<span style="background-color:  rgb(228, 244, 246); border-radius:5px" > {{task.createdDate | date: "mediumDate"}}</span>
+    </div>
+ 
+    <div class="t-description">
+        <span class="t-description">{{task.desctioption}}</span>
+    </div>
+    <app-task-edit #taskEditModal>
+    </app-task-edit>
+</div>

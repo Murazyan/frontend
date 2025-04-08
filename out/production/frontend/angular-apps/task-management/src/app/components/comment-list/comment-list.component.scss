@@ -1,0 +1,22 @@
+.comments-container{
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+.comment-user-image{
+    border-radius: 50%;
+    height: 40px;
+}
+
+// {
+//     margin-left: 100px;
+//     min-height: 40px;
+//     border: 1px solid #03A9F4;
+//     border-radius: 7px;
+//     padding: 5px;
+// }
+
+.comment-txt{
+    min-height: 40px; 
+    border-width: 1px;
+}

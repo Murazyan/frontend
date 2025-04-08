@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //    function f(x,y, arguments){
+    //        console.log(x)
+    //        console.log(x)
+    //        console.log(this.arguments[0])
+    //        console.log(arguments[0])
+    //        console.log(arguments)
+    //        console.log(arguments.length)
+    //    }
+    //    f(2,3,896,7456)
+
+//    let user = {
+//        a: 55,
+//        get a() {
+//                return this.a;
+//            },
+//        toString: function(){
+//             return "poxos";
+//        }
+//
+//    }
+//    console.log(user.a)
+//    alert(user)
+
+    class User {
+
+        constructor(name) {
+            this.name = name;
+        }
+
+        sayHi() {
+            alert(this.name);
+        }
+
+    }
+
+    // Usage:
+    let user = new User("John");
+    user.sayHi();
+</script>
+
+</body>
+</html>

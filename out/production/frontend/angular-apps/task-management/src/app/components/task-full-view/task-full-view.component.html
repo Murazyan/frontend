@@ -1,0 +1,48 @@
+<div class="task-view  d-flex flex-column" style="height: 90vh;">
+    <div class="task-info" >
+        <div>
+            <span>{{task?.title}}</span>
+            <div>
+                Task Status: {{task?.status}}
+            </div>
+            <div>
+                Created Date: <span>{{task?.createdDate  | date: "mediumDate"}}</span>
+            </div>
+            <div>
+                Task Label: <span >{{task?.label}}</span>
+            </div>
+        </div>
+        <div *ngIf="task?.image">
+            <img [src]="task?.image">
+        </div>
+        
+        <div>
+            <span>{{task?.desctioption}}</span>
+        </div>
+    </div>
+  
+    <div class="comments">
+        <app-comment-list 
+            [items]="comments.content" 
+            class="document-list">
+        </app-comment-list>
+  
+        <div class="position-relative fixed-bottom">
+            <ngb-pagination [collectionSize]="comments.totalElementCount"
+                [(page)]="comments.page"
+                [boundaryLinks]="true"
+                [pageSize]="comments.limit"
+                (pageChange)="pageChange($event)"/>
+    </div>
+    <div class="add-comment position-relative fixed-bottom" >
+        <form
+         (ngSubmit)="addNewCommetn(commentForm)" 
+          #commentForm="ngForm">
+            <textarea name="newComment" class="w-100 p-3 mb-2" ngModel placeholder="Add comment..." ></textarea>
+            <button type="submit" class="btn btn-primary w-90 mt-auto" style="font-size: 16px; padding: 8px 15px; margin-top: 0px;">Add</button>
+        </form>
+
+     </div>
+
+ 
+</div>

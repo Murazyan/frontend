@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test2</title>
+</head>
+<body>
+<table>
+  <thead>
+  <th>Number</th>
+  </thead>
+  <tbody id="t-body">
+
+  </tbody>
+</table>
+<template id="row">
+    <tr></tr>
+</template>
+</body>
+<script>
+    const arr = Array.from({ length: 205 }, (_, i) => i + 1);
+    let tBody = document.getElementById('t-body');
+    console.log('row', row)
+    for (let i=0; i<arr.length;i+=100){
+        setTimeout(()=>{
+            for (let j=i; j<i+100 && j<arr.length;j+=1){
+                let item = arr[j];
+                let row = document.getElementById('row').content.cloneNode(true).children[0];
+                row.innerHTML =item;
+                tBody.appendChild(row);
+            }
+        },1)
+
+    }
+//    for(item in arr){
+//        let row = document.getElementById('row').content.cloneNode(true).children[0];
+//        row.innerHTML =item;
+//        tBody.appendChild(row);
+//    }
+
+</script>
+</html>

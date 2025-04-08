@@ -1,0 +1,6 @@
+.card {
+    flex-basis: calc(100% / 5); /* This will set a maximum of 5 items per row */
+    box-sizing: border-box;
+    position: relative;
+
+  }

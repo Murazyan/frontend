@@ -1,0 +1,12 @@
+<div class="countdown-timer">
+    <div class="progress-circle">
+      <div 
+        class="circle" 
+        [ngStyle]="{
+          'background': 'conic-gradient(#00aaff ' + progress + '%, #d8d8d8 ' + progress + '%)'
+        }">
+        <div class="inside-circle">{{ remainingTime | numberToTime }}</div>
+      </div>
+    </div>
+  </div>
+  

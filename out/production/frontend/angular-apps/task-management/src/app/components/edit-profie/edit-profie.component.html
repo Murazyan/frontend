@@ -1,0 +1,90 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Edit Profile: </h4>
+    </div>
+    <div class="modal-body">
+        <div class="">
+            <form #editForm="ngForm" (ngSubmit)="editProfile(editForm)">
+
+                <div>
+                    <label for="name">Name:</label>
+                    <input name="name" class="form-control" id="name" [ngModel]="currentUser?.name" />
+                </div>
+                <div>
+                    <label for="surname">Surname:</label>
+                    <input name="surname" class="form-control" id="surname" [ngModel]="currentUser?.surname" />
+                </div>
+                <input type="submit" [disabled]="editForm.untouched || !editForm.dirty" class="btn btn-primary mt-3"
+                    value="Save changes" />
+
+            </form>
+            ---------------------------------------------------------
+        </div>
+
+        <div class="mt-3">
+            <div>
+                <img #userAvatar [src]="currentUser?.avatar" style="width: 170px; max-height:230px">
+            </div>
+            <div class="d-flex  align-items-start gap-4 mt-2">
+                <button class="btn btn-primary" (click)="fileInput?.click()">
+                    Change Avatar
+                </button>
+                <input #fileInput class="d-none" type="file" id="addFileBtn"
+                    (change)="handleFileInput($event, userAvatar )">
+            </div>
+        </div>
+        ---------------------------------------------------------
+        <form  [formGroup]="password" (ngSubmit)="changePassword()">
+
+            <div>
+                <label for="old-password">Old Password:</label>
+                <input  type="password" 
+                        formControlName="oldPassword"
+                        name="oldPassword"  
+                        class="form-control" 
+                        id="oldPassword" />
+                <div *ngIf="password.get('oldPassword')?.hasError('required')  && password.get('oldPassword')!.touched">
+                    <small class="text-danger">Old password is required.</small>
+                </div>
+                <div *ngIf="password.get('oldPassword')?.hasError('incorrectPassword') && password.get('oldPassword')?.touched">
+                    <small class="text-danger">The old password is incorrect.</small>
+                  </div>
+            </div>
+            <div>
+                <label for="new-password">New Password:</label>
+                <input  type="password"  
+                        formControlName="newPassword" 
+                        name="newPassword"  
+                        class="form-control" 
+                        id="new-password" />
+                <div *ngIf="password.get('newPassword')!.invalid && password.get('newPassword')!.touched">
+                    <small class="text-danger">New password is required.</small>
+                </div>
+            </div>
+
+            <div>
+                <label for="repeat-password">Repeat Password:</label>
+                <input  type="password"  
+                        formControlName="repeatPassword"  
+                        name="repeatPassword" 
+                        class="form-control" 
+                        id="repeatPassword" />
+                <div *ngIf="password.get('repeatPassword')!.hasError('passwordMismatch') && password.get('repeatPassword')!.touched">
+                    <small class="text-danger">Passwords do not match.</small>
+                </div> 
+            </div>
+            <input  type="submit"  [disabled]="password.invalid"
+                    class="btn btn-primary mt-3"
+                    value="Change password" />
+
+        </form>
+
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="closeModal()">Close
+            </button>
+        </div>
+
+    </div>
+
+</ng-template>

@@ -1,0 +1,21 @@
+<div class="d-flex" style="height: 75px; border: rgb(98, 81, 247) 1 solid; gap:5px">
+    <div class="btn-wrapper d-flex">
+        <button class="btn"
+            [disabled]="currentPage===1"
+            (click)="previousClick()">&lt;&lt;</button>
+    </div>
+    <div class="d-flex" style="justify-content: space-around; align-items: center; gap: 10px">
+        <div *ngFor="let item of items.content; let indx = index" [ngClass]="{'underline': selectedItem==item}">
+           <app-item 
+                [item]="item"
+                (itemClick)="itemClicked($event)">
+            </app-item>  
+        </div>
+    </div>
+
+    <div class="btn-wrapper d-flex">
+        <button class="btn"
+            [disabled]="items.totalElementCount/items.limit < currentPage"
+            (click)="nextClick()">&gt;&gt;</button>
+    </div>
+</div>

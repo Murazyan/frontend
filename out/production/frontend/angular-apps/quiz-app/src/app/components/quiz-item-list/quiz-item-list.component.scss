@@ -1,0 +1,12 @@
+
+.quiz-list{
+    gap: 10px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap; /* NEW */
+    width: 100vw;
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding-left: 30px;
+}
+
