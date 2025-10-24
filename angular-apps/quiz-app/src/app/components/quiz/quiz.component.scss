@@ -1,0 +1,15 @@
+:root{
+    height: calc(100vh - 120px);
+}
+.quiz{
+    gap: 10px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap; 
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+.question{
+    max-height: 190px;
+    overflow: auto
+}

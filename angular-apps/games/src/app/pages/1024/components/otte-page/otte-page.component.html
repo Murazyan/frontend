@@ -1,0 +1,17 @@
+
+
+<div class="container" appKeyDown>
+    <div class="app-row" nz-row [nzGutter]="[hGutter, vGutter]">
+        <div class="app-column" nz-col [nzSpan]="24 / count"
+            *ngFor="let row of otteService.objectModel.elements; let rowIndex = index">
+            <div 
+                    [class]="'item_'+item"
+                    class="item" 
+                    *ngFor="let item of row; let itemIndex = index">
+                    <ng-container *ngIf="item!=0">
+                        {{item}}
+                    </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
